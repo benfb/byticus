@@ -3,6 +3,10 @@ class Player
   $health = 100
   
   def name?
-    $name = gets.chomp.capitalize
+    @name = gets.chomp.capitalize
+  end
+  
+  def name
+    return @name
   end
 end

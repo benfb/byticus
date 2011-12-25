@@ -11,9 +11,10 @@ require 'player'
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
 
+@name = 'CAPS'
 @player.name?
 
-puts 'Greetings, ' + $name + '!'
+puts 'Greetings, ' + @player.name + '!'
 @god.wait
 puts 'The game will now begin!'
 puts ''
