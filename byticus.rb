@@ -69,9 +69,6 @@ if $input == 'climb'
 	puts 'After your fall, you decide to walk along the path.'
 end
 
-#heal = rand(11)
-#@player.lose_health
-
 until $input == 'walk north'
   puts 'Type in walk north to walk along the path.' 
   @god.input
@@ -90,10 +87,8 @@ puts 'Suddenly, you hear footsteps and a low growl. Do you want to [flee], or [a
 @god.input
 @god.check
 
-wound = rand(6)
-heal = rand(6)
 if $input == 'flee'
-  puts 'While attempting to flee your leg gets bitten by an infected dog. You lose ' + @player.wound + ' health for the next five minutes and have to rest!'
+  puts 'While attempting to flee your leg gets bitten by an infected dog. Your infection results in a loss of ' + @player.infected + ' health, forcing you to rest!'
   sleep 10
   @player.lose_health
   puts 'You awaken with ' + @player.health + ' health remaining.'

@@ -19,6 +19,11 @@ class Player
     return @@wound.to_s
   end
   
+  def infected
+    @@wound = rand(6) * 5
+    return @@wound.to_s    
+  end
+  
   def heal
     @@heal = rand(11)
     return @@heal.to_s

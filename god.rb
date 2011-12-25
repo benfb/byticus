@@ -34,4 +34,7 @@ class God
       add
     end
   end
+  
+  def accept_command
+  end
 end
