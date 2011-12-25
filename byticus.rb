@@ -11,7 +11,6 @@ require 'player'
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
 
-@name = 'CAPS'
 @player.name?
 
 puts 'Greetings, ' + @player.name + '!'
