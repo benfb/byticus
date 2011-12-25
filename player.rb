@@ -1,12 +1,8 @@
 class Player  
-  # Defines global variables
+  # Defines instance variables
   $health = 100
   
   def name?
     $name = gets.chomp.capitalize
-  end
-  
-  def wait
-    sleep $wait_time
   end
 end
