@@ -23,12 +23,11 @@ puts 'You\'re walking down a dark hallway, when you see an old lady. You decide 
 @god.input
 @god.check
 
-wound = rand(11)
-puts 'The lady gets angry and kicks your shins. You lose ' + wound.to_s + ' health!'
+puts 'The lady gets angry and kicks your shins. You lose ' + @player.wound + ' health!'
 
-$health = $health - wound
+@player.lose_health
 
-puts 'You now have ' + $health.to_s + ' health remaining.'
+puts 'You now have ' + @player.health + ' health remaining.'
 puts ''
 @god.wait
 puts 'Ouch, you say. Type in fight to attack the lady!'
@@ -62,17 +61,16 @@ until $input == 'climb'
 end
 
 if $input == 'climb'
-	wound = rand(11)
-	puts 'You try to climb the wall, but it is too slippery. you fall and lose ' + wound.to_s + ' health!'
-	$health = $health - wound
+	puts 'You try to climb the wall, but it is too slippery. you fall and lose ' + @player.wound + ' health!'
+	@player.lose_health
   @god.wait
-	puts 'You now have ' + $health.to_s + ' health remaining.'
+	puts 'You now have ' + @player.health + ' health remaining.'
   @god.wait
 	puts 'After your fall, you decide to walk along the path.'
 end
 
-heal = rand(11)
-$health = $health + heal
+#heal = rand(11)
+#@player.lose_health
 
 until $input == 'walk north'
   puts 'Type in walk north to walk along the path.' 
@@ -81,9 +79,10 @@ until $input == 'walk north'
 end  
 
 if $input == 'walk north'
-	puts 'You walk along the path. You then come into a clearing, and see a lake. You wash yourself in it. It restores ' + heal.to_s + ' health!'
+	puts 'You walk along the path. You then come into a clearing, and see a lake. You wash yourself in it. It restores ' + @player.heal + ' health!'
 	@god.wait
-  puts 'You now have ' + $health.to_s + ' health!'
+  @player.gain_health
+  puts 'You now have ' + @player.health + ' health!'
 end
 @god.wait
 puts 'Suddenly, you hear footsteps and a low growl. Do you want to [flee], or [attack]?'
@@ -94,17 +93,18 @@ puts 'Suddenly, you hear footsteps and a low growl. Do you want to [flee], or [a
 wound = rand(6)
 heal = rand(6)
 if $input == 'flee'
-  puts 'While attempting to flee your leg gets bitten by an infected dog. You lose ' + wound.to_s + ' health for the next five minutes and have to rest!'
+  puts 'While attempting to flee your leg gets bitten by an infected dog. You lose ' + @player.wound + ' health for the next five minutes and have to rest!'
   sleep 10
-  $health = $health - wound*5
-  puts 'You awaken with ' + $health.to_s + ' health remaining.'
+  @player.lose_health
+  puts 'You awaken with ' + @player.health + ' health remaining.'
 end
 
 if $input == 'attack'
-  puts 'You shoot an arrow towards the noise, killing a beast. You skin the beast and eat the meat, restoring ' + heal.to_s + ' health.'
+  puts 'You shoot an arrow towards the noise, killing a beast. You skin the beast and eat the meat, restoring ' + @player.heal + ' health.'
   $item = 'meat'
   @god.add
-  puts 'You now have ' + $health.to_s + ' health remaining.'
+  @player.gain_health
+  puts 'You now have ' + @player.health + ' health remaining.'
   @god.list
   @god.input
   @god.check

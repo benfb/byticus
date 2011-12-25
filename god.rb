@@ -19,7 +19,7 @@ class God
   end
   
   def list
-    puts $inv.each {|i| print}.to_s.reverse unless $inv.empty?
+    puts $inv.each {|i| print}.to_s unless $inv.empty?
     if $inv.empty?
       puts 'You are carrying nothing. Whimp.'
     end
