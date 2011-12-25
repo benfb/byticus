@@ -3,6 +3,7 @@ class God
   $wait_time = 2
   
   $inv = []
+  $commands = ['help', 'n', 's', 'e', 'w', 'attack']
 
   def wait
     sleep $wait_time
@@ -18,13 +19,19 @@ class God
   end
   
   def list
-    puts $inv.each {|i| print}
+    puts $inv.each {|i| print}.to_s.reverse unless $inv.empty?
+    if $inv.empty?
+      puts 'You are carrying nothing. Baby.'
+    end
   end
   
   def check
     if $input == 'inv'
-      $inv.each {|i| print}
+      list
+    elsif $input == 'get'
+      puts 'What do you want to get?'
+      $item = gets.chomp.downcase
+      add
     end
   end
-
 end

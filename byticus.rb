@@ -106,6 +106,8 @@ if $input == 'attack'
   @god.add
   puts 'You now have ' + $health.to_s + ' health remaining.'
   @god.list
+  @god.input
+  @god.check
 end
 
 puts 'Goodbye!'
