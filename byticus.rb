@@ -5,15 +5,15 @@ require 'god'
 require 'actor'
 require 'player'
 
-@god = God.new(self)
-@player = Player.new(self)
+@god = God.new()
+@player = Player.new()
 
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
 
 @player.name?
 
-puts 'Greetings, ' + $name + '!'
+puts 'Greetings, ' + @player.name + '!'
 @god.wait
 puts 'The game will now begin!'
 puts ''
@@ -26,9 +26,9 @@ puts 'You\'re walking down a dark hallway, when you see an old lady. You decide 
 wound = rand(11)
 puts 'The lady gets angry and kicks your shins. You lose ' + wound.to_s + ' health!'
 
-$health = $health - wound
+@player.hurt
 
-puts 'You now have ' + $health.to_s + ' health remaining.'
+puts 'You now have ' + @player.health.to_s + ' health remaining.'
 puts ''
 @god.wait
 puts 'Ouch, you say. Type in fight to attack the lady!'

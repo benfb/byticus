@@ -1,12 +1,12 @@
 class God  
   # Defines global variables
-  $wait_time = 2
+  @wait_time = 2
   
   $inv = []
   $commands = ['help', 'n', 's', 'e', 'w', 'attack']
 
   def wait
-    sleep $wait_time
+    sleep 2
   end
   
   def input
