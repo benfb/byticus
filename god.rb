@@ -1,44 +1,29 @@
 class God
   
-  # Defines global variables
+  ### Defines variables ###
 
   @@wait_time = 2
   
   @@inv = []
-  $commands = ['help', 'n', 's', 'e', 'w', 'attack']
 
   def wait
     sleep @@wait_time
   end
+  
+  ### The basic method of the game ###
   
   def input
     puts '>>'
     $input = gets.chomp.downcase
   end
   
-  def add
-    @@inv.push($item)
-  end
-  
-  def list
-    puts @@inv.each {|i|} unless @@inv.empty?
-    if @@inv.empty?
-      puts 'You are carrying nothing. Whimp!'
-    end
-  end
-  
-  def get
-    puts 'What do you want to get?'
-    $item = gets.chomp.downcase
-    add
-  end
+  ### Directional commands ###
   
   def n
     unless $player.location.n == nil
       $player.location = $player.location.n 
       puts 'You are now in ' + $player.location.name + '.'
-    end
-    if $player.location.n == nil
+    else
       puts 'You can\'t go that way.'
     end
   end
@@ -73,6 +58,8 @@ class God
     end
   end
   
+  ### Item commands ###
+  
   def search
     if $player.location.denarii > 0
       $player.gain
@@ -82,6 +69,31 @@ class God
       puts 'There is no money in this room.'
     end
   end
+  
+  def add
+    @@inv.push($item)
+  end
+  
+  def list
+    puts @@inv.each {|i|} unless @@inv.empty?
+    if @@inv.empty?
+      puts 'You are carrying nothing. Whimp!'
+    end
+  end
+  
+  def get
+    puts 'What do you want to get?'
+    $item = gets.chomp.downcase
+    add
+  end
+  
+  ### Description, help and info commands ###
+  
+  def look
+    puts 'You are in ' + $player.location.name + '. There is a ' + $player.location.npc.name + ' in the room as well.'
+  end
+  
+  ### The glorious check method ###
   
   def check
     case $input
@@ -102,6 +114,8 @@ class God
         search
       when 'buy'
         buy
+      when 'look'
+        look
       else puts 'That is not a valid command.'  
     end
   end

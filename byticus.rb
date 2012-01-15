@@ -25,8 +25,9 @@ puts 'You have ' + $player.denarii.to_s + ' denarii and ' + $player.health.to_s 
 puts 'The game will now begin!'
 puts ''
 @god.wait
-puts 'You\'re walking down a ' + @dark_hallway.name + '. There is an ' + @dark_hallway.npc.name.to_s + ' in the room. If you go to the north, you will climb a ' + @dark_hallway.n.name.to_s + '. You decide to talk to her. You say:'
-
+puts 'You\'re walking down a ' + $player.location.name + '. There is an ' + $player.location.npc.name.to_s + ' in the room. If you go to the north, you will climb a ' + @dark_hallway.n.name.to_s + '. You decide to talk to her. You say:'
+#puts 'You can go:'
+#puts 'North to ' + $player.location.n.name + ''
 @god.input
 @god.check
 
