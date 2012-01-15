@@ -15,7 +15,7 @@ class Player
   
   def hurt
     wound = rand(11)
-    @health = @health - wound
+    @health = (@health || 0) - wound
   end
   
   def infected

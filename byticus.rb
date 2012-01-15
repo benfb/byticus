@@ -23,12 +23,11 @@ puts 'You\'re walking down a dark hallway, when you see an old lady. You decide 
 @god.input
 @god.check
 
-wound = rand(11)
-puts 'The lady gets angry and kicks your shins. You lose ' + wound.to_s + ' health!'
-
 @player.hurt
 
-puts 'You now have ' + @player.health.to_s + ' health remaining.'
+puts 'The lady gets angry and kicks your shins. You lose ' + @player.wound_var + ' health!'
+
+puts 'You now have ' + @player.health + ' health remaining.'
 puts ''
 @god.wait
 puts 'Ouch, you say. Type in fight to attack the lady!'
