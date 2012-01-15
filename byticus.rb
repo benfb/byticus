@@ -10,7 +10,7 @@ require 'enemy'
 @god = God.new()
 
 # Creates the rooms
-@old_lady = Enemy.new('Old Lady', 5, rand(11))
+@old_lady = Enemy.new('Old Lady', 5, 1 + rand(6))
 @goblin = Enemy.new('Goblin', 5, rand(11))
 @wall = Room.new('Wall', nil, @dark_hallway, nil, nil, @goblin, 0)
 @dark_hallway = Room.new('Dark Hallway', @wall, nil, nil, nil, @old_lady, 5)
@@ -33,7 +33,7 @@ puts 'You\'re walking down a ' + $player.location.name + '. There is an ' + $pla
 
 $player.hurt
 
-puts 'The lady gets angry and kicks your shins. You lose ' + $player.wound.to_s + ' health!'
+puts 'The lady gets angry and kicks your shins. You lose ' + $player.location.npc.strength.to_s + ' health!'
 
 puts 'You now have ' + $player.health.to_s + ' health remaining.'
 puts ''
@@ -74,7 +74,7 @@ end
 
 if $input == 'climb' and @chance <= 0.8
 	$player.hurt
-	puts 'You try to climb the wall, but it is too slippery. you fall and lose ' + $player.wound.to_s + ' health!'
+	puts 'You try to climb the wall, but it is too slippery. you fall and lose ' + $player.location.npc.strength.to_s + ' health!'
   @god.wait
 	puts 'You now have ' + $player.health.to_s + ' health remaining.'
   @god.wait
@@ -97,7 +97,7 @@ if $input == 'walk north'
   puts 'You now have ' + $player.health.to_s + ' health!'
 end
 @god.wait
-puts 'Suddenly, you hear footsteps and a low growl. Do you want to [flee], or [attack]?'
+puts 'Suddenly, you hear footsteps and a low growl. Do you wish to [flee], or [attack]?'
 
 @god.input
 @god.check

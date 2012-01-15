@@ -20,8 +20,7 @@ class Player
   end
   
   def hurt
-    @wound = rand(11)
-    @health = @health - @wound
+    @health = @health - @location.npc.strength
   end
   
   def infected

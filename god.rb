@@ -93,6 +93,14 @@ class God
     puts 'You are in ' + $player.location.name + '. There is a ' + $player.location.npc.name + ' in the room as well.'
   end
   
+  def help
+    puts File.open("help.txt").read
+  end
+  
+  def info
+    puts File.open("readme.md").read
+  end
+  
   ### The glorious check method ###
   
   def check
@@ -102,20 +110,24 @@ class God
       when 'get'
         get
         add
-      when 'n'
+      when 'n', 'north'
         n
-      when 's'
+      when 's', 'south'
         s
-      when 'e'
+      when 'e', 'east'
         e
-      when 'w'
+      when 'w', 'west'
         w
       when 'search'
         search
       when 'buy'
         buy
-      when 'look'
+      when 'l', 'look'
         look
+      when 'help'
+        help
+      when 'info'
+        info
       else puts 'That is not a valid command.'  
     end
   end
