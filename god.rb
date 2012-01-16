@@ -91,11 +91,6 @@ class God
     end
   end
   
-  def drink
-    puts 'What do you want to drink?'
-    $drink = gets.chomp.downcase
-  end  
-  
   ### Description, help and info commands ###
   
   def look
