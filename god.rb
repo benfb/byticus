@@ -71,7 +71,7 @@ class God
   end
   
   def add
-    @@inv.push($item)
+    @@inv.push($player.location.item)
   end
   
   def list
@@ -82,15 +82,25 @@ class God
   end
   
   def get
-    puts 'What do you want to get?'
-    $item = gets.chomp.downcase
-    add
+    if $player.location.item.nil?
+      puts 'There\'s nothing to get.'  
+    else
+      puts 'You pick up the ' + $player.location.item + '.'
+      add
+      $player.location.item = nil
+    end
   end
   
   ### Description, help and info commands ###
   
   def look
-    puts 'You are in ' + $player.location.name + '. There is a ' + $player.location.npc.name + ' in the room as well.'
+    puts 'You are in ' + $player.location.name + '.'
+    unless $player.location.npc.nil?
+      puts 'There is a ' + $player.location.npc.name + ' in the room.'
+    end
+    unless $player.location.item.nil? 
+      puts 'It contains a ' + $player.location.item.to_s + '.'
+    end
   end
   
   def help

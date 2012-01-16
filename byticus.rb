@@ -12,8 +12,9 @@ require 'enemy'
 # Creates the rooms
 @old_lady = Enemy.new('Old Lady', 5, 1 + rand(6))
 @goblin = Enemy.new('Goblin', 5, rand(11))
-@wall = Room.new('Wall', nil, @dark_hallway, nil, nil, @goblin, 0)
-@dark_hallway = Room.new('Dark Hallway', @wall, nil, nil, nil, @old_lady, 5)
+@clearing = Room.new('Clearing', nil, nil, nil, nil, nil, 10, 'bottled spring water')
+@wall = Room.new('Wall', @clearing, @dark_hallway, nil, nil, @goblin, 0, 'slice of bread')
+@dark_hallway = Room.new('Dark Hallway', @wall, nil, nil, nil, @old_lady, 5, nil)
 
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
@@ -92,6 +93,7 @@ until $input == 'walk north'
 end  
 
 if $input == 'walk north'
+  $player.location = @clearing
 	puts 'You walk along the path. You then come into a clearing, and see a lake. You wash yourself in it. It restores ' + $player.healing.to_s + ' health!'
 	@god.wait
   puts 'You now have ' + $player.health.to_s + ' health!'
@@ -105,17 +107,19 @@ puts 'Suddenly, you hear footsteps and a low growl. Do you wish to [flee], or [a
 if $input == 'flee'
   $player.infected
   puts 'While attempting to flee your leg gets bitten by an infected dog. You lose ' + $player.infected_hurting.to_s + ' health over the next five minutes and have to rest!'
-  sleep 10
+  sleep 5
   puts 'You awaken with ' + $player.health.to_s + ' health remaining.'
 end
 
 if $input == 'attack'
-  $player.rest
-  puts 'You shoot an arrow towards the noise, killing a beast. You skin the beast and eat the meat, restoring ' + $player.rest_healing.to_s + ' health.'
   $item = 'meat'
-  @god.add
-  puts 'You now have ' + $player.health.to_s + ' health remaining.'
-  @god.list
+  puts 'You shoot an arrow towards the noise, killing a beast. You skin the beast. and collect its pelt and flesh.'
+  $player.location.item = 'beast flesh'
+  @god.input
+  @god.check
+end
+
+while @game_over == false
   @god.input
   @god.check
 end
