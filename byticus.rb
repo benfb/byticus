@@ -6,20 +6,27 @@ require 'actor'
 require 'player'
 require 'room'
 require 'enemy'
+require 'item'
 
 @god = God.new()
 
-# Creates the rooms
-@old_lady = Enemy.new('Old Lady', 5, 1 + rand(6))
-@goblin = Enemy.new('Goblin', 5, rand(11))
-@clearing = Room.new('Clearing', nil, nil, nil, nil, nil, 10, 'bottled spring water')
+# Creates the room (name, n, s, e, w, npc, denarii, item)
+@clearing = Room.new('Clearing', nil, nil, nil, nil, nil, 10, @water)
 @wall = Room.new('Wall', @clearing, @dark_hallway, nil, nil, @goblin, 0, 'slice of bread')
 @dark_hallway = Room.new('Dark Hallway', @wall, nil, nil, nil, @old_lady, 5, nil)
 
+# Creates NPCs (name, health, strength)
+@old_lady = Enemy.new('Old Lady', 5, 1 + rand(6))
+@goblin = Enemy.new('Goblin', 5, rand(11))
+
+# Creates items (name, drinkable, eatable, usable)
+@water = Item.new('Bottled Water', true, false, false)
+
+# Creates the Player
+$player = Player.new('Ben', 100, 5, @dark_hallway)
+
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
-
-$player = Player.new('Ben', 100, 5, @dark_hallway)
 puts 'Greetings, ' + $player.name + '!'
 puts 'You have ' + $player.denarii.to_s + ' denarii and ' + $player.health.to_s + ' health.'
 @god.wait
