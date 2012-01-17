@@ -13,14 +13,14 @@ class God
   ### The basic method of the game ###
   
   def input
-    puts '>>'
+    print '>> '
     $input = gets.chomp.downcase
   end
   
   ### Directional commands ###
   
   def n
-    unless $player.location.n == nil
+    unless $player.location.n.nil? 
       $player.location = $player.location.n 
       puts 'You are now in ' + $player.location.name + '.'
     else

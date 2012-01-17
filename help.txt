@@ -22,6 +22,7 @@ Commands
 ##################
 Terms
 ##################
+
 * denarii - the currency of the game (also used in Rome)
 
 ##################
@@ -31,4 +32,6 @@ Tips
 ##################
 Enemies
 ##################
-* old lady - the occasional ornery ancient female. Has a strength of 0-5
+
+* old lady - the occasional ornery ancient female. Has a strength of 1-6 and 5 health.
+* goblin - a standard RPG enemy. Has a strength of 1-8
