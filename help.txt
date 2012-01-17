@@ -34,4 +34,4 @@ Enemies
 ##################
 
 * old lady - the occasional ornery ancient female. Has a strength of 1-6 and 5 health.
-* goblin - a standard RPG enemy. Has a strength of 1-8
+* goblin - a standard RPG enemy. Has a strength of 1-8 and 6 health.

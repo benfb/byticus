@@ -1,13 +1,14 @@
 class Player  
   # Defines instance variables
   attr_reader :wound, :name, :health, :healing, :rest_healing, :infected_hurting, :denarii
-  attr_accessor :location
+  attr_accessor :location, :inv
   
-  def initialize(name, health, denarii, location)
+  def initialize(name, health, denarii, location, inv)
     @name = name
     @health = health
     @denarii = denarii
     @location = location
+    @inv = []
   end
   
   def name?
@@ -39,5 +40,9 @@ class Player
   
   def spend
     @denarii = @denarii - @location.item.cost
+  end
+  # CHANGED: Added stats method to player
+  def stats
+    puts 'You have ' + self.health.to_s + ' health remaining and have ' + self.denarii.to_s + ' denarii to your name.'
   end
 end

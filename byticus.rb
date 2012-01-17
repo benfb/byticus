@@ -9,17 +9,23 @@ require 'enemy'
 
 @god = God.new()
 
-# Creates the rooms
+# Creates the NPCs (name, health, strength)
 @old_lady = Enemy.new('Old Lady', 5, 1 + rand(6))
 @goblin = Enemy.new('Goblin', 5, rand(11))
+
+# Creates the rooms (name, n, s, e, w, npc, denarii, item)
 @clearing = Room.new('Clearing', nil, nil, nil, nil, nil, 10, 'bottled spring water')
 @wall = Room.new('Wall', @clearing, @dark_hallway, nil, nil, @goblin, 0, 'slice of bread')
 @dark_hallway = Room.new('Dark Hallway', @wall, nil, nil, nil, @old_lady, 5, nil)
 
+# Creates the player (name, health, denarii, location, inventory)
+# FIXME: Let the player put in their own name
+$player = Player.new('Ben', 100, 5, @dark_hallway, nil)
+
+# The start of the game
 puts 'Welcome to B Y T I C U S !'
 puts 'What be your name, oh great adventurer?'
 
-$player = Player.new('Ben', 100, 5, @dark_hallway)
 puts 'Greetings, ' + $player.name + '!'
 puts 'You have ' + $player.denarii.to_s + ' denarii and ' + $player.health.to_s + ' health.'
 @god.wait
@@ -27,10 +33,8 @@ puts 'The game will now begin!'
 puts ''
 @god.wait
 puts 'You\'re walking down a ' + $player.location.name + '. There is an ' + $player.location.npc.name + ' in the room. If you go to the north, you will climb a ' + @dark_hallway.n.name.to_s + '. You decide to talk to her. You say:'
-#puts 'You can go:'
-#puts 'North to ' + $player.location.n.name + ''
-@god.input
-@god.check
+
+@god.accept_command
 
 $player.hurt
 
@@ -41,8 +45,7 @@ puts ''
 @god.wait
 puts 'Ouch, you say. Type in fight to attack the lady!'
 
-@god.input
-@god.check
+@god.accept_command
 
 until $input == 'fight'
 	puts 'Time is money! Type in fight to attack'
@@ -62,13 +65,11 @@ puts 'There is also a pathway to the north.'
 @god.wait
 puts 'After a moment\'s hesitation, you decide to try the wall. Type in climb to scale the wall.'	
 
-@god.input
-@god.check
+@god.accept_command
 
 until $input == 'climb'
   puts 'Type in climb to climb theë wall.' 
-	@god.input
-  @god.check
+	@god.accept_command
 end
 
 @chance = rand(6)/5
@@ -88,8 +89,7 @@ $player.heal
 
 until $input == 'walk north'
   puts 'Type in walk north to walk along the path.' 
-  @god.input
-  @god.check
+  @god.accept_command
 end  
 
 if $input == 'walk north'
@@ -101,8 +101,7 @@ end
 @god.wait
 puts 'Suddenly, you hear footsteps and a low growl. Do you wish to [flee], or [attack]?'
 
-@god.input
-@god.check
+@god.accept_command
 
 if $input == 'flee'
   $player.infected
@@ -112,16 +111,13 @@ if $input == 'flee'
 end
 
 if $input == 'attack'
-  $item = 'meat'
   puts 'You shoot an arrow towards the noise, killing a beast. You skin the beast. and collect its pelt and flesh.'
   $player.location.item = 'beast flesh'
-  @god.input
-  @god.check
+  @god.accept_command
 end
 
 while @game_over == false
-  @god.input
-  @god.check
+  @god.accept_command
 end
 
 puts 'Goodbye!'
