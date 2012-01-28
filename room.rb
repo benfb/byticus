@@ -1,5 +1,5 @@
 class Room
-  attr_accessor :name, :n, :s, :e, :w, :npc, :denarii, :item
+  attr_accessor :name, :n, :s, :e, :w, :npc, :denarii, :item, :direction
   def initialize(name, n, s, e, w, npc, denarii, item)
     @name = name
     @n = n
@@ -31,46 +31,6 @@ class Room
     end
   end
   
-  def go(n, s, e, w)
-  end
-  def n
-    unless $player.location.n.nil? 
-      $player.location = $player.location.n 
-      puts 'You are now in ' + $player.location.name + '.'
-    else
-      puts 'You can\'t go that way.'
-    end
-  end
-  
-  def s
-    unless $player.location.s == nil
-      $player.location = $player.location.s 
-      puts 'You are now in ' + $player.location.name + '.'
-    end
-    if $player.location.s == nil
-      puts 'You can\'t go that way.'
-    end
-  end
-  
-  def e
-    unless $player.location.e == nil
-      $player.location = $player.location.e 
-      puts 'You are now in ' + $player.location.name + '.'
-    end
-    if $player.location.e == nil
-      puts 'You can\'t go that way.'
-    end
-  end
-  
-  def w
-    unless $player.location.w == nil
-      $player.location = $player.location.w 
-      puts 'You are now in ' + $player.location.name + '.'
-    end
-    if $player.location.w == nil
-      puts 'You can\'t go that way.'
-    end
-  end
   
 end
     

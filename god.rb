@@ -25,13 +25,13 @@ class God
         get
         add
       when 'n', 'north'
-        $player.location.n
+        $player.go($player.location.n)
       when 's', 'south'
-        $player.location.s
+        $player.go($player.location.s)
       when 'e', 'east'
-        $player.location.e
+        $player.location.go('e')
       when 'w', 'west'
-        $player.location.w
+        $player.location.go('w')
       when 'search'
         $player.location.search
       when 'buy'

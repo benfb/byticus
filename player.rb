@@ -1,7 +1,7 @@
 class Player  
   # Defines instance variables
   attr_reader :wound, :name, :health, :healing, :rest_healing, :infected_hurting, :denarii
-  attr_accessor :location, :inv
+  attr_accessor :location, :inv, :direction
   
   def initialize(name, health, denarii, location, inv)
     @name = name
@@ -41,6 +41,18 @@ class Player
   def spend
     @denarii = @denarii - @location.item.cost
   end
+  
+  def go(direction)
+    @direction = direction
+    $player.location = @location
+    unless $player.location..nil?
+      $player.location = $player.location
+      puts 'You are now in ' + $player.location.name + '.'
+    else
+      puts 'You can\'t go that way.'
+    end
+  end
+  
   # CHANGED: Added stats method to player
   def stats
     puts 'You have ' + self.health.to_s + ' health remaining and have ' + self.denarii.to_s + ' denarii to your name.'
