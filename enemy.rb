@@ -4,5 +4,6 @@ class Enemy
     @name = name
     @health = health
     @strength = strength
+    @test = test
   end
 end
