@@ -43,13 +43,15 @@ class Player
   end
   
   def go(direction)
-    @direction = direction
-    $player.location = @location
-    unless $player.location..nil?
-      $player.location = $player.location
-      puts 'You are now in ' + $player.location.name + '.'
+    new_location = location.send(direction)
+
+    if new_location
+      location = new_location
+      puts "You are now in #{location.name}."
+      return true
     else
-      puts 'You can\'t go that way.'
+      puts "You can't go that way."
+      return false
     end
   end
   
