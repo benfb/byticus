@@ -4,8 +4,8 @@ require File.expand_path('../lib/byticus/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ben Bailey"]
   gem.email         = ["bennettbailey@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = "A text-based RPG made in ruby"
+  gem.summary       = "See website for more details"
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
