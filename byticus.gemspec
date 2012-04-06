@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'byticus'
-  s.version     = '0.0.1'
+  s.version     = '0.0.1.2'
   s.date        = '2011-04-06'
   s.summary     = 
     "A simple text-based rpg in ruby. See the website for more details."
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/byticus.rb"]
   s.homepage    =
     'http://benbailey.me/byticus'
+    s.executables << 'byticus'
 end
