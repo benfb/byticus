@@ -68,7 +68,7 @@ puts 'After a moment\'s hesitation, you decide to try the wall. Type in climb to
 @god.accept_command
 
 until $input == 'climb'
-  puts 'Type in climb to climb theë wall.' 
+  puts 'Type in climb to climb the wall.' 
 	@god.accept_command
 end
 
