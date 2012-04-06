@@ -1,14 +1,17 @@
-Gem::Specification.new do |s|
-  s.name        = 'byticus'
-  s.version     = '0.0.2'
-  s.date        = '2011-04-06'
-  s.summary     = 
-    "A simple text-based rpg in ruby. See the website for more details."
-  s.description = "A simple text-based rpg in ruby"
-  s.authors     = ["Ben Bailey"]
-  s.email       = 'bennettbailey@gmail.com'
-  s.files       = ["lib/byticus.rb"]
-  s.homepage    =
-    'http://benbailey.me/byticus'
-    s.executables << 'byticus'
+# -*- encoding: utf-8 -*-
+require File.expand_path('../lib/byticus/version', __FILE__)
+
+Gem::Specification.new do |gem|
+  gem.authors       = ["Ben Bailey"]
+  gem.email         = ["bennettbailey@gmail.com"]
+  gem.description   = %q{TODO: Write a gem description}
+  gem.summary       = %q{TODO: Write a gem summary}
+  gem.homepage      = ""
+
+  gem.files         = `git ls-files`.split($\)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.name          = "byticus"
+  gem.require_paths = ["lib"]
+  gem.version       = Byticus::VERSION
 end
