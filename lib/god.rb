@@ -1,21 +1,23 @@
 class God
   
-  ### Defines variables ###
+  ### Defines variables
 
   def wait
     sleep 2
   end
   
-  ### The basic method of the game ###
+  ### The basic method of the game
   
   def input
     print '>> '
     $input = gets.chomp.downcase
   end
+
+  def help
+    puts File.open("help.txt").read
+  end
   
-  ### Directional commands ###
-  
-  ### The glorious check method ###
+  ### The glorious check method
   
   def check
     case $input
@@ -40,8 +42,6 @@ class God
         $player.location.look
       when 'help'
         help
-      when 'info'
-        info
       when 'stats'
         $player.stats
       else puts 'That is not a valid command.'  

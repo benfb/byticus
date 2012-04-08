@@ -1,5 +1,5 @@
-require "byticus/version"
-require 'rubygems'
+$: << File.expand_path(File.dirname(__FILE__))  
+require 'byticus/version'
 require 'god'
 require 'actor'
 require 'player'
@@ -7,7 +7,7 @@ require 'room'
 require 'enemy'
 
 module Byticus
-  $: << File.expand_path(File.dirname(__FILE__))  
+#  $: << File.expand_path(File.dirname(__FILE__))  
     @god = God.new()
 
     # Creates the NPCs (name, health, strength)

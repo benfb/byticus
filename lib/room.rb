@@ -14,7 +14,7 @@ class Room
   def look
     puts 'You are in ' + $player.location.name + '.'
     unless $player.location.npc.nil?
-      puts 'There is a ' + $player.location.npc.name + ' in the room.'
+      puts 'There is a(n) ' + $player.location.npc.name + ' in the room.'
     end
     unless $player.location.item.nil? 
       puts 'It contains a ' + $player.location.item.to_s + '.'
