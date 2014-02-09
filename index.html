@@ -1,37 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
     <title>Byticus by benfb</title>
-  </head>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  </head>
   <body>
 
-    <header>
-      <div class="container">
+      <header>
         <h1>Byticus</h1>
-        <h2>A simple text-based RPG in Ruby</h2>
+        <p>A simple text-based RPG in Ruby</p>
+      </header>
 
-        <section id="downloads">
-          <a href="https://github.com/benfb/byticus/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/benfb/byticus/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/benfb/byticus" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <div id="banner">
+        <span id="logo"></span>
 
-    <div class="container">
-      <section id="main_content">
+        <a href="https://github.com/benfb/byticus" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/benfb/byticus/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/benfb/byticus/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <h1>
 <a name="byticus" class="anchor" href="#byticus"><span class="octicon octicon-link"></span></a>Byticus</h1>
 
-<p>A simple unfinished text-based adventure game written in Ruby several years ago with help from <a href="https://github.com/h3h" class="user-mention">@h3h</a>. It's obviously no longer in development, but feel free to laugh at it, use it as an example, or contribute.</p>
+<p>A simple unfinished text-based adventure game written in Ruby several years ago with a little help from <a href="https://github.com/h3h" class="user-mention">@h3h</a>. It's obviously no longer in development, but feel free to laugh at it, use it as an example, or contribute.</p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -53,15 +64,19 @@
 
 <ul>
 <li>Added a readme file detailing changes</li>
-<li>Added the Player.initialize method, solving the <a href="https://github.com/health" class="user-mention">@health</a> problem</li>
+<li>Added the Player.initialize method, solving the <code>@health</code> problem</li>
 <li>Introduced a problem where the player name cannot be asked (due to the method belonging to the player class, which can't be initialized without a name itself)</li>
 <li>Began work on making the game non-linear</li>
 <li>Revamped use of variables (down to only one global variable)</li>
 <li>Reworked the way the game handles health</li>
 </ul>
       </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/benfb">benfb</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
