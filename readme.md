@@ -1,18 +1,8 @@
 # Byticus
 
-TODO: Write a gem description
+A simple unfinished text-based adventure game written in Ruby several years ago with help from @h3h. It's obviously no longer in development, but feel free to laugh at it, use it as an example, or contribute.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'byticus'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install byticus
 
@@ -27,8 +17,6 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-# B Y T I C U S
 
 ## Changelog for v0.01
 * Added a readme file detailing changes
