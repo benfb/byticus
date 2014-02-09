@@ -1,14 +1,10 @@
 # Byticus
 
-A simple unfinished text-based adventure game written in Ruby several years ago with help from @h3h. It's obviously no longer in development, but feel free to laugh at it, use it as an example, or contribute.
+A simple unfinished text-based adventure game written in Ruby several years ago with a little help from @h3h. It's obviously no longer in development, but feel free to laugh at it, use it as an example, or contribute.
 
 ## Installation
 
     $ gem install byticus
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
@@ -20,7 +16,7 @@ TODO: Write usage instructions here
 
 ## Changelog for v0.01
 * Added a readme file detailing changes
-* Added the Player.initialize method, solving the @health problem
+* Added the Player.initialize method, solving the `@health` problem
 * Introduced a problem where the player name cannot be asked (due to the method belonging to the player class, which can't be initialized without a name itself)
 * Began work on making the game non-linear
 * Revamped use of variables (down to only one global variable)
