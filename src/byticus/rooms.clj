@@ -1,8 +1,7 @@
 (ns byticus.rooms)
 
-(defrecord Room [desc north south east west contents])
+(defrecord Room [desc exits contents])
 
 (def rooms
-  {:hallway (->Room "A pretty dark hallway." :wall "" "" "" #{})
-   :wall (->Room "A not so nice wall." "" :hallway "" "" #{})})
-
+  {:hallway (->Room "A pretty dark hallway." {:north :wall} #{})
+   :wall (->Room "A not so nice wall." {:south :hallway} #{})})

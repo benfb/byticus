@@ -15,12 +15,14 @@
 
 (defn look
   []
-  (println (:desc (state/get-player :location))))
+  (let [loc (state/get-player :location)]
+    (println (:desc loc))
+    (println "Exits:" (apply name (keys (:exits loc))))))
 
 (defn go
   [direction]
   (let [key-direction (keyword direction)
-        new-location (key-direction (state/get-player :location))]
+        new-location (key-direction (:exits (state/get-player :location)))]
     (state/update-player :location (state/get-room new-location)))
   (println "You went" direction".")
   (look))
