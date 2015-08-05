@@ -19,7 +19,6 @@
    })
 
 (defn parse-vn [input]
-  (let [parsed (->> (verb-noun input) (insta/transform transform-options))]
-    (if (insta/failure? parsed)
-      nil
+  (let [parsed (insta/transform transform-options (verb-noun input))]
+    (when-not (insta/failure? parsed)
      (hash-map :verb (second parsed), :nouns (drop 1 (rest parsed))))))
