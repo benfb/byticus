@@ -20,7 +20,7 @@
     (println (:desc loc))
     (println "Exits:")
     (println (map name (keys exits)))
-    (println (iterate state/get-room exits))))
+    (println (:desc (state/get-room (:east exits))))))
 
 (defn go
   [direction]
