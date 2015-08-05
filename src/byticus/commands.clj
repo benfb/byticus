@@ -15,9 +15,12 @@
 
 (defn look
   []
-  (let [loc (state/get-player :location)]
+  (let [loc (state/get-player :location)
+        exits (:exits loc)]
     (println (:desc loc))
-    (println "Exits:" (apply name (keys (:exits loc))))))
+    (println "Exits:")
+    (println (map name (keys exits)))
+    (println (iterate state/get-room exits))))
 
 (defn go
   [direction]
