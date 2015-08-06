@@ -1,6 +1,7 @@
 (ns byticus.core
   (:require [byticus.parser :as parse]
-            [byticus.commands :as byt])
+            [byticus.commands :as byt]
+            [byticus.world :as w])
   (:gen-class))
 
 (defn get-input
@@ -28,6 +29,7 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
+  (w/populate-world)
   (println "Welcome to byticus! Type 'help' to get help.")
   (while true
     (let [input (get-input)]

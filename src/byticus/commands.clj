@@ -15,10 +15,10 @@
 
 (defn look
   []
-  (let [loc (w/get-player :location)
+  (let [loc (w/get-state :active-room)
         exits (:exits loc)
         names (map name (keys exits))
-        descs (map :desc (map #(w/get-room (% exits)) (keys exits)))]
+        descs (map :desc (map #(w/get-rooms (% exits)) (keys exits)))]
     (println (:desc loc))
     (println "Exits:")
     (println (map #(str "To the " %1 " is " %2 ",") names descs))))
@@ -26,8 +26,8 @@
 (defn go
   [direction]
   (let [key-direction (keyword direction)
-        new-location (key-direction (:exits (w/get-player :location)))]
-    (w/update-player :location (w/get-room new-location)))
+        new-location (key-direction (:exits (w/get-state :active-room)))]
+    (w/update-state :active-room (w/get-rooms new-location)))
   (println "You went" direction".")
   (look))
 
