@@ -4,7 +4,7 @@
 (def verb-noun
   (insta/parser
     "S = (V0) | (V1 <' '> N) | (V2 (<' '>N)+)
-     V0 = ('help' | 'rest' | 'look')
+     V0 = ('help' | 'rest' | 'look' | 'exit')
      V1 = ('eat' | 'wash' | 'help' | 'go' | 'rest' | 'look')
      V2 = ('give')
      N = ('food' | 'hands' | 'me' | DIR)

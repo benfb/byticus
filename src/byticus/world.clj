@@ -8,7 +8,8 @@
   :items items
   :npcs npcs
   :player player
-  :active-room (:hallway rooms)}))
+  :active-room (:hallway rooms)
+  :running true}))
 
 (defn get-state [key]
   (@world-state key))
@@ -16,11 +17,13 @@
 (defn update-state [key val]
   (swap! world-state assoc key val))
 
+(defn running? []
+  (get-state :running?))
 
 ;; People
 
-(defn get-player [key]
-  (key (get-state :player)))
+(defn get-player [player-key]
+  (player-key (get-state :player)))
 
 (defn update-player [key val]
   (update-state :player (assoc (get-state :player) key val)))
@@ -32,8 +35,8 @@
   (let [new-npcs (assoc (get-state :npcs) npc new-npc)]
     (update-state :npcs new-npcs)))
 
-(defn get-npc [npc key]
-  (key (get-npcs npc)))
+(defn get-npc [npc npc-key]
+  (npc-key (get-npcs npc)))
 
 (defn update-npc [npc key val]
   (let [npc-obj (get-npcs npc)
@@ -49,8 +52,8 @@
   (let [new-rooms (assoc (get-state :rooms) room new-room)]
     (update-state :rooms new-rooms)))
 
-(defn get-room [room key]
-  (key (get-rooms room)))
+(defn get-room [room room-key]
+  (room-key (get-rooms room)))
 
 (defn update-room [room key val]
   (let [room-obj (get-rooms room)
@@ -64,7 +67,7 @@
 
 (defn move-item [title obj1 obj2]
   (let [item (get-item (key title))]
-    (update-player (get-state :items))))
+    (update-player :inv (get-state :items))))
 
 (defn populate-world []
   (update-room :bar :people (conj (get-room :bar :people) {:oldlady (get-npcs :oldlady)}))

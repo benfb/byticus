@@ -6,6 +6,11 @@
   []
   (println (str/trim (slurp "resources/help.txt"))))
 
+(defn quit
+  []
+  (w/update-state :running false)
+  (println "Goodbye!"))
+
 (defn sleep
   []
   (let [health-gained (rand-int 5)
@@ -22,18 +27,18 @@
         names (map name (keys exits))
         descs (map :desc (map #(w/get-rooms (% exits)) (keys exits)))]
     (println (:desc loc))
-    (when (> (count items) 0)
-      (println (map #(str "There is a " %1 " in the room.") items)))
-    (when (> (count npcs) 0)
-      (println (map #(str "There is a " %1 " in the room.") npcs)))
+    (when (pos? (count items))
+      (apply println (map #(str "There is a " %1 " in the room.") items)))
+    (when (pos? (count npcs))
+      (apply println (map #(str "There is a " %1 " in the room.") npcs)))
     (println "Exits:")
-    (println (map #(str "To the " %1 " is " %2 ",") names descs))))
+    (apply println (map #(str "To the " %1 " is " %2 ",") names descs))))
 
 (defn go
   [direction]
   (let [key-direction (keyword direction)
         new-location (key-direction (:exits (w/get-state :active-room)))]
-    (if (not (nil? new-location))
+    (if-not (nil? new-location)
       (do (w/update-state :active-room (w/get-rooms new-location))
         (println "You went" direction".")
         (look))

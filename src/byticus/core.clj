@@ -18,6 +18,7 @@
     "go"   (byt/go (first nouns))
     "rest" (byt/sleep)
     "look" (byt/look)
+    "exit" (byt/quit)
     "default"))
 
 (defn valid?
@@ -31,7 +32,7 @@
   [& args]
   (w/populate-world)
   (println "Welcome to byticus! Type 'help' to get help.")
-  (while true
+  (while (w/get-state :running)
     (let [input (get-input)]
       (if (valid? input)
         (let [parsed (byticus.parser/parse-vn input)
