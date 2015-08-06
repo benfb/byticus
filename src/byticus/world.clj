@@ -67,7 +67,9 @@
     (update-player (get-state :items))))
 
 (defn populate-world []
-  (update-room :hallway :people (get-npcs :oldlady))
-  (update-npc :oldlady :inv (get-item :pumpkin))
-  (update-npc :oldlady :inv (conj (get-npc :oldlady :inv) {:baseball (get-item :baseball)}))
-  (println (get-npcs :oldlady)))
+  (update-room :bar :people (conj (get-room :bar :people) {:oldlady (get-npcs :oldlady)}))
+  (update-room :wall :items (conj (get-room :wall :items) {:baseball (get-item :baseball)}))
+  (update-room :wall :items (conj (get-room :wall :items) {:pumpkin (get-item :pumpkin)}))
+  (println (get-rooms :wall)))
+  ;(update-npc :oldlady :inv (conj (get-npc :oldlady :inv) {:baseball (get-item :baseball)}))
+  ;(println (get-npcs :oldlady)))

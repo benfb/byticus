@@ -16,10 +16,16 @@
 (defn look
   []
   (let [loc (w/get-state :active-room)
+        items (map name (keys (:items loc)))
+        npcs (map :title (map w/get-npcs (keys (:people loc))))
         exits (:exits loc)
         names (map name (keys exits))
         descs (map :desc (map #(w/get-rooms (% exits)) (keys exits)))]
     (println (:desc loc))
+    (when (> (count items) 0)
+      (println (map #(str "There is a " %1 " in the room.") items)))
+    (when (> (count npcs) 0)
+      (println (map #(str "There is a " %1 " in the room.") npcs)))
     (println "Exits:")
     (println (map #(str "To the " %1 " is " %2 ",") names descs))))
 
@@ -27,9 +33,11 @@
   [direction]
   (let [key-direction (keyword direction)
         new-location (key-direction (:exits (w/get-state :active-room)))]
-    (w/update-state :active-room (w/get-rooms new-location)))
-  (println "You went" direction".")
-  (look))
+    (if (not (nil? new-location))
+      (do (w/update-state :active-room (w/get-rooms new-location))
+        (println "You went" direction".")
+        (look))
+      (println "You can't go that way!"))))
 
 (defn eat
   [obj]

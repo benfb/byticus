@@ -4,7 +4,7 @@
 
 (defrecord NPC [title health denarii inv])
 
-(def player (->Player "Joe" 100 10 #{}))
+(def player (->Player "Joe" 100 10 {}))
 
 (def npcs
-  {:oldlady (->NPC "a mean old lady" 5 0 #{})})
+  {:oldlady (->NPC "mean old lady" 5 0 {})})
