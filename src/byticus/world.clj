@@ -78,6 +78,6 @@
 
 (defn populate-world []
   (update-room :bar :people (conj (get-room :bar :people) {:oldlady (get-npcs :oldlady)}))
-  (update-room :wall :items (conj (get-room :wall :items) {:baseball (get-item :baseball)}))
-  (update-room :wall :items (conj (get-room :wall :items) {:pumpkin (get-item :pumpkin)}))
+  (update-room :wall :items (conj (get-room :wall :items) {:baseball (get-items :baseball)}))
+  (update-room :wall :items (conj (get-room :wall :items) {:pumpkin (get-items :pumpkin)}))
   (println (get-rooms :wall)))
