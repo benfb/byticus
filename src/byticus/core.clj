@@ -11,9 +11,10 @@
 
 (defn valid?
   [input-string]
-  (if (nil? (byticus.parser/parse-vn input-string))
-    false
-    true))
+  (let [parsed (byticus.parser/parse-vn input-string)]
+    (if (nil? parsed)
+      false
+      parsed)))
 
 (defn -main
   "I don't do a whole lot ... yet."
@@ -21,13 +22,11 @@
   (byticus.world/populate-world)
   (println "Welcome to byticus! Type 'help' to get help.")
   (while (byticus.world/get-state :running)
-    (let [input (get-input)]
-      (if (valid? input)
-        (let [parsed (byticus.parser/parse-vn input)
-              verb (:verb parsed)
-              nouns (:nouns parsed)]
-          (byticus.router/route verb nouns))
-        (println "That's not a valid command!!")))))
+    (if-let [parsed (valid? (get-input))]
+      (let [verb (:verb parsed)
+            nouns (:nouns parsed)]
+        (byticus.router/route verb nouns))
+      (println "That's not a valid command!!"))))
 
 
 
