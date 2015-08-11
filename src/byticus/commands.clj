@@ -32,7 +32,7 @@
     (when (pos? (count npcs))
       (apply println (map #(str "There is a " %1 " in the room.") npcs)))
     (println "Exits:")
-    (apply println (map #(str "To the " %1 " is " %2 ",") names descs))))
+    (apply println (map #(str "To the " %1 " is " %2 ".\n") names descs))))
 
 (defn go
   [direction]
@@ -40,7 +40,6 @@
         new-location (key-direction (:exits (w/get-state :active-room)))]
     (if-not (nil? new-location)
       (do (w/update-state :active-room (w/get-rooms new-location))
-        (println "You went" direction".")
         (look))
       (println "You can't go that way!"))))
 
