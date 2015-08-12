@@ -72,12 +72,8 @@
 (defn get-item [item item-key]
   (item-key (get-items item)))
 
-(defn move-item [title obj1 obj2]
-  (let [item (get-items (key title))]
-    (update-player :inv (get-state :items))))
-
 (defn populate-world []
+  (update-player :inv {:baseball (get-items :baseball)})
   (update-room :bar :people (conj (get-room :bar :people) {:oldlady (get-npcs :oldlady)}))
   (update-room :wall :items (conj (get-room :wall :items) {:baseball (get-items :baseball)}))
-  (update-room :wall :items (conj (get-room :wall :items) {:pumpkin (get-items :pumpkin)}))
-  (println (get-rooms :wall)))
+  (update-room :wall :items (conj (get-room :wall :items) {:pumpkin (get-items :pumpkin)})))

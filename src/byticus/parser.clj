@@ -7,7 +7,7 @@
      V0 = ('help' | 'rest' | 'look' | 'exit')
      V1 = ('eat' | 'wash' | 'go')
      V2 = ('give')
-     N = ('food' | 'hands' | 'me' | DIR)
+     N = ('food' | 'hands' | 'me' | 'oldlady' | 'baseball' | DIR)
      DIR = ('north' | 'south' | 'east' | 'west')"))
 
 (def transform-options

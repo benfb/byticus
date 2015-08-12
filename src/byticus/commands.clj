@@ -53,4 +53,10 @@
 
 (defn give
   [obj dest]
+  (let [item-key (keyword obj)
+        item (w/get-items item-key)
+        inv (w/get-player :inv)
+        npc-key (keyword dest)]
+    (w/update-player :inv (dissoc inv item-key))
+    (w/update-npc npc-key :inv (dissoc item (w/get-npc npc-key :inv))))
   (println "You give the" obj "to the" dest))
