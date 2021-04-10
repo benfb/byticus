@@ -1,6 +1,5 @@
 (ns byticus.router
-  (:require [byticus.commands :as byt])
-  (:gen-class))
+  (:require [byticus.commands :as byt]))
 
 (defn route
   [command nouns]

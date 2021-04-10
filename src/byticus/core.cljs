@@ -2,8 +2,7 @@
   (:require [byticus.parser]
             [byticus.commands]
             [byticus.router]
-            [byticus.world])
-  (:gen-class))
+            [byticus.world]))
 
 (defn get-input
   ([prompt] (do (print prompt) (flush) (read-line)))
@@ -20,7 +19,7 @@
   [& args]
   (byticus.world/populate-world)
   (println "Welcome to byticus! Type 'help' to get help.")
-  (while (byticus.world/get-state :running)
+  (while (byticus.world/running?)
     (if-let [parsed (valid? (get-input))]
       (byticus.router/route (:verb parsed) (:nouns parsed))
       (println "That's not a valid command!!"))))

@@ -18,7 +18,7 @@
   (swap! world-state assoc key val))
 
 (defn running? []
-  (get-state :running?))
+  (get-state :running))
 
 ;; People
 
